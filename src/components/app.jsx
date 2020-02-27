@@ -8,8 +8,9 @@ class App extends React.Component {
   constructor(props){
     super(props);
     this.state = {
-      view: "view-cards"
+      view: "view-card"
     }
+    this.setView = this.setView.bind(this);
   }
 
   setView(currentView){
@@ -22,7 +23,7 @@ class App extends React.Component {
     switch(this.state.view){
       case 'create-card':
         return <CreateCard />;
-      case 'review-card':
+      case 'review-cards':
         return <ReviewCards />;
       case 'view-cards':
         return <ViewCards />;
@@ -33,7 +34,7 @@ class App extends React.Component {
   render() {
     return (
       <div>
-        <Nav setView={this.setview} />
+        <Nav setView={this.setView} />
         {this.getView()}
       </div>
     );
