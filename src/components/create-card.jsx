@@ -13,13 +13,13 @@ class CreateCard extends React.Component {
     this.reset = this.reset.bind(this);
   }
 
-handleChange(event){
-const name = event.target.name;
-const value = event.target.value;
-this.setState({
-  [name]: value
-});
-}
+  handleChange(event){
+    const name = event.target.name;
+    const value = event.target.value;
+      this.setState({
+        [name]: value
+      });
+  }
 
   handleSubmit(event){
     event.preventDefault();
@@ -54,7 +54,7 @@ this.setState({
 
             <div className="text-center">
               <button onClick={this.reset} type="button"> Cancel</button>
-              <button type="add" >Save Card</button>
+              <button type="submit" >Save Card</button>
             </div>
 
           </form>
