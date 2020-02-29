@@ -14,9 +14,6 @@ class ViewCards extends React.Component{
 
         {renderCard}
 
-
-
-
       </div>
     </div>
     )
