@@ -23,7 +23,9 @@ class CreateCard extends React.Component {
 
   handleSubmit(event){
     event.preventDefault();
-    this.props.addCardToCreateCard({...this.state});
+    let id = this.props.lengthOfCards;
+    console.log("id", id);
+    this.props.addCardToCreateCard({id, ...this.state});
     this.reset();
   }
 
@@ -36,8 +38,8 @@ class CreateCard extends React.Component {
 
   render() {
     const { question, answer } = this.state;
-    console.log("question", this.state.question);
-    console.log("answer",this.state.answer);
+    // console.log("question---", this.state.question);
+    // console.log("answer---",this.state.answer);
     return (
       <div className="container">
         <h1 className="text-center my-4">Create New Card</h1>

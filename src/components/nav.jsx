@@ -34,5 +34,3 @@ class Nav extends React.Component {
 }
 
 export default Nav;
-//change the view depending on click;
-// need to run

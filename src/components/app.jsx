@@ -8,11 +8,18 @@ class App extends React.Component {
   constructor(props){
     super(props);
     this.state = {
-      view: "view-card",
-      cards: []
+      view: "view-cards",
+      cards: [],
+      activeCard: undefined
     }
     this.setView = this.setView.bind(this);
     this.addCard = this.addCard.bind(this);
+    this.saveCards = this.saveCards.bind(this);
+    this.setActiveCard = this.setActiveCard.bind(this);
+  }
+
+  componentDidMount(){
+    this.getCards();
   }
 
   setView(currentView){
@@ -24,9 +31,9 @@ class App extends React.Component {
   getView(){
     switch(this.state.view){
       case 'create-card':
-        return <CreateCard addCardToCreateCard={this.addCard}/>;
+        return <CreateCard addCardToCreateCard={this.addCard} lengthOfCards={this.state.cards.length}/>;
       case 'review-cards':
-        return <ReviewCards />;
+        return <ReviewCards activeCardToReviewCards={this.state.activeCard} setActiveCardToReviewCards={this.setActiveCard} cardsArray={this.state.cards}/>;
       case 'view-cards':
         return <ViewCards GiveCardArrayToViewCard={this.state.cards}/>;
       default:
@@ -34,21 +41,42 @@ class App extends React.Component {
     }
   }
 
+  getCards() {
+    const cards = localStorage.getItem('flash-cards');
+
+    if(cards) {
+      this.setState({
+        cards: JSON.parse(cards)
+      });
+    }
+  }
+
   saveCards(){
     var stringified = JSON.stringify(this.state.cards);
-    localStorage.setItem( 'flash-cards', stringified);
+    localStorage.setItem('flash-cards', stringified);
   }
 
   addCard(cardObject){
-    console.log(cardObject);
+    // console.log("this is the card object", cardObject);
     this.setState ({
       cards: [
         ...this.state.cards,
         cardObject
       ]
-    })
-
+    }, this.saveCards);
   }
+
+  setActiveCard(index){
+    const activeCard = this.state.cards[index];
+
+    if(activeCard) {
+      this.setState({
+        activeCard: activeCard
+      });
+    }
+  }
+
+
 
   render() {
     console.log("state of cards", this.state.cards);
