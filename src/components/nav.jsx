@@ -10,7 +10,7 @@ class Nav extends React.Component {
 
   change(e){
   this.props.setView(e.target.id);
-  console.log("wrokign or not", e.target.id);
+  // console.log("wrokign or not", e.target.id);
   }
 
   render() {
@@ -34,5 +34,3 @@ class Nav extends React.Component {
 }
 
 export default Nav;
-//change the view depending on click;
-// need to run
