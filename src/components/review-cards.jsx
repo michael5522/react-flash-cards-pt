@@ -24,13 +24,6 @@ class ReviewCards extends React.Component{
       curIndex++;
     }
     this.props.setActiveCardToReviewCards(curIndex);
-
-    // const insideIndex = this.props.cardsArray.findIndex((card)=>{
-    //   return card.id == currentCard.id
-    // });
-    // console.log("current card",currentCard, "inside index",insideIndex);
-    // console.log(currentCard.question);
-    // console.log(currentCard.answer);
     }
 
     lastCard(){
@@ -42,7 +35,6 @@ class ReviewCards extends React.Component{
         curIndex--;
       }
       this.props.setActiveCardToReviewCards(curIndex);
-
     }
 
     changeStatus(){
@@ -53,26 +45,8 @@ class ReviewCards extends React.Component{
     }
 
     render(){
-      // const activeCard = this.props.activeCardToReviewCards;
-      // if(activeCard) {
-      //   console.log("active card--------",activeCard);
-      // }
-      // // console.log('Active Card in Review Cards:', this.props.activeCardToReviewCards);
-      // return (
-      //   <div className="container">
-      //     <h1 className="text-center my-4">Review Cards</h1>
-      //     <h2 className="text-center my-4" onClick={this.changeStatus}>Question: {activeCard ? activeCard.question : ''}</h2>
-      //     <h2 className="text-center my-4" onClick={this.changeStatus}>Answer: {activeCard ? activeCard.answer : ''}</h2>
-      //     <button onClick={this.nextCard}>next card</button>
-      //     <button onClick={this.lastCard}>prevous card</button>
-      //   </div>
-
-      // );
-
-
       const activeCard = this.props.activeCardToReviewCards;
-      //  if(activeCard) {
-        console.log("active card--------",activeCard);
+        // console.log("active card--------",activeCard);
        if(this.state.isQuestion){
          return (
            <div className="container ">
@@ -81,10 +55,8 @@ class ReviewCards extends React.Component{
                <button className="d-inline col-sm-1" onClick={this.lastCard}> Last </button>
                <h2 className=" d-inline text-center my-4 text-white col-sm-10" onClick={this.changeStatus}>Question: {activeCard ? activeCard.question : ''}</h2>
                <button className="d-inline col-sm-1" onClick={this.nextCard}> Next </button>
-
               </div>
            </div>
-
          );
 
       }else{
@@ -97,12 +69,17 @@ class ReviewCards extends React.Component{
               <button className="d-inline col-sm-1" onClick={this.nextCard}> Next </button>
             </div>
           </div>
-
         );
       }
     }
 
-
 }
 
 export default ReviewCards;
+
+  // const insideIndex = this.props.cardsArray.findIndex((card)=>{
+    //   return card.id == currentCard.id
+    // });
+    // console.log("current card",currentCard, "inside index",insideIndex);
+    // console.log(currentCard.question);
+    // console.log(currentCard.answer);

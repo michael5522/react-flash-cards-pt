@@ -57,7 +57,6 @@ class App extends React.Component {
   }
 
   addCard(cardObject){
-    // console.log("this is the card object", cardObject);
     this.setState ({
       cards: [
         ...this.state.cards,
@@ -76,10 +75,8 @@ class App extends React.Component {
     }
   }
 
-
-
   render() {
-    console.log("state of cards", this.state.cards);
+    // console.log("state of cards", this.state.cards);
     return (
       <div>
         <Nav setView={this.setView} />
